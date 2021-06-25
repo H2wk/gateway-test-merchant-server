@@ -97,7 +97,9 @@ function doRequest($url, $method, $data = null, $headers = null) {
     if (!empty($headers)) {
         curl_setopt($curl, CURLOPT_HTTPHEADER, $headers);
     }
+    file_put_contents('php://stderr', print_r($curl, TRUE))
     $response = curl_exec($curl);
+    file_put_contents('php://stderr', print_r($response, TRUE))
     curl_close($curl);
 
     return $response;
