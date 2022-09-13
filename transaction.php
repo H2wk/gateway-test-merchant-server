@@ -28,6 +28,16 @@ if (intercept('PUT')) {
     proxyCall($path);
 }
 
+// proxy GET requests
+if (intercept('GET')) {
+    // build path
+    $orderId = requiredQueryParam('order');
+    $txnId = requiredQueryParam('transaction');
+    $path = '/order/' . $orderId . '/transaction/' . $txnId;
+
+    proxyCall($path);
+}
+
 ?>
 
 <html>
